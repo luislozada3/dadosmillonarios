@@ -1,49 +1,40 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Wrapper from './Wrapper';
 import Card from './Card';
 
 const ResultsStyled = styled.div`
     box-sizing: border-box;
     width: 100%;
-    padding: 1.2em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     background-color: var(--grey-light);
-    & .title-result{
-        color: var(--grey);
-        font-size: 1.6rem;
-        margin-bottom: 1em;
-    }
-    & .result-item{
-        color: var(--dark-grey);
-        text-align: center;
-        margin-bottom: 1.5em;
-        font-size: 1.2em;
+    & .content-results {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        & .title-result{
+            color: var(--grey);
+            font-size: 1.6rem;
+            margin-bottom: 1em;
+        }
+        & .result-item{
+            color: var(--dark-grey);
+            text-align: center;
+            margin-bottom: 1.5em;
+            font-size: 1.2em;
+        }
     }
     @media screen and (min-width: 575px) {
-        padding: 1.2em 2em;
-        & .result-list{
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-column-gap: 1em;
-        }
-        & .title-result {
-            font-size: 2rem;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        padding: 1.2em 5em;
-        & .result-list{
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-
-    @media screen and (min-width: 992px) {
-        & .result-list{
-            grid-template-columns: repeat(4, 1fr);
+        & .content-results {
+            & .title-result {
+                font-size: 2rem;
+            }
+            & .result-list{
+                display: flex;
+                justify-content: space-around;
+                flex-flow: row wrap;
+            }
         }
     }
 `;
@@ -62,28 +53,32 @@ function Results () {
 
     return (
         <ResultsStyled>
-            <h2 className='title-result'>Resultados del dia</h2>
-            <div className='result-list'>
-                { results.map( (result, index) => {
-                    if (result.animal) {
-                        return (
-                            <div key={index} className='result-item'> 
-                                {result.schedule}
-                                <Card animal={result.animal} color={result.color}/>
-                                {result.animal} / {result.color}
-                            </div>
-                        );
-                    }
+            <Wrapper>
+                <div className='content-results'>
+                    <h2 className='title-result'>Resultados del dia</h2>
+                    <div className='result-list'>
+                        { results.map( (result, index) => {
+                            if (result.animal) {
+                                return (
+                                    <div key={index} className='result-item'> 
+                                        {result.schedule}
+                                        <Card animal={result.animal} color={result.color}/>
+                                        {result.animal} / {result.color}
+                                    </div>
+                                );
+                            }
 
-                    return (
-                        <div key={index} className='result-item'> 
-                            {result.schedule}
-                            <Card animal='sin resultados' color='grey'/>
-                            Sin resultado
-                        </div>
-                    );
-                } ) }
-            </div>
+                            return (
+                                <div key={index} className='result-item'> 
+                                    {result.schedule}
+                                    <Card animal='sin resultados' color='grey'/>
+                                    Sin resultado
+                                </div>
+                            );
+                        } ) }
+                    </div>
+                </div>
+            </Wrapper>
         </ResultsStyled>
     );
 }

@@ -14,9 +14,6 @@ const WrapperStyle = styled.div`
     @media screen and (min-width: 992px) {
         max-width: 960px;
     }
-    @media screen and (min-width: 1200px) {
-        max-width: 1140px;
-    }
 `;
 
 function Wrapper ({children}) {
