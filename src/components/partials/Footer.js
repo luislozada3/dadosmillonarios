@@ -1,6 +1,7 @@
 import React from 'react';
-import Wrapper from './Wrapper';
+import Wrapper from '../Wrapper';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FooterStyle = styled.footer`
     box-sizing: border-box;
@@ -29,11 +30,15 @@ const FooterStyle = styled.footer`
                     margin-top: -0.5em;
                 }
                 text-decoration: none;
-                color: #01579b;
+                color: var(--dark-blue);
                 font-weight: 400;
                 font-size: .9em;
                 padding: .5em 0px;
                 display: block;
+                &:hover,
+                &:active {
+                    color: var(--blue);
+                }
             }
         }
         & .social-container{
@@ -100,29 +105,29 @@ function Footer () {
         <FooterStyle>
             <Wrapper>
                 <div className='content-footer'>
-                    <img height='250' className='logo-footer' src={require('../assets/images/logo2.png')} alt='logo' />
+                    <img height='250' className='logo-footer' src={require('../../assets/images/logo2.png')} alt='logo' />
 
                     <div className='content-links'>
                         <h3 className='title-footer'>Enlaces</h3>
-                        <a href='./' className='link-polity'>Se parte de nosotros</a>
-                        <a href='./' className='link-polity'>Condiciones del uso</a>
-                        <a href='./' className='link-polity'>Politica de privacidad</a>
+                        <Link to='./' className='link-polity'>Se parte de nosotros</Link>
+                        <Link to='./' className='link-polity'>Condiciones del uso</Link>
+                        <Link to='./' className='link-polity'>Politica de privacidad</Link>
                     </div>
 
                     <div className='social-container'>
                         <h3 className='title-footer'>Redes Sociales</h3>
                         <div className='socials'>
-                            <a href='https://www.facebook.com/dadosmillonarios' target='__blank' className="social-icon">
-                                <img height='30'  src={require('../assets/images/sociales/facebook.png')} alt='facebook'/>
+                            <a href='https://www.facebook.com/dadosmillonarios' title='@dadosmillonario' className='social-icon'>
+                                <img height='30'  src={require('../../assets/images/sociales/facebook.png')} alt='facebook'/>
                             </a>
-                            <a href='https://www.facebook.com/dadosmillonarios' className="social-icon">
-                                <img height='30'  src={require('../assets/images/sociales/instagram.png')} alt='instagram'/>
+                            <a href='https://www.facebook.com/dadosmillonarios' title='@dadosmillonario' className='social-icon'>
+                                <img height='30'  src={require('../../assets/images/sociales/instagram.png')} alt='instagram'/>
                             </a>
-                            <a href='https://twitter.com/dadosmillonario?lang=es' className="social-icon">
-                                <img height='30'  src={require('../assets/images/sociales/twitter.png')} alt='twitter'/>
+                            <a href='https://www.facebook.com/dadosmillonarios' title='@dadosmillonario' className='social-icon'>
+                                <img height='30'  src={require('../../assets/images/sociales/twitter.png')} alt='twitter'/>
                             </a>
-                            <a href='https://www.facebook.com/dadosmillonarios' className="social-icon">
-                                <img height='30'  src={require('../assets/images/sociales/youtube.png')} alt='youtube'/>
+                            <a href='https://www.facebook.com/dadosmillonarios' title='@dadosmillonario' className='social-icon'>
+                                <img height='30'  src={require('../../assets/images/sociales/youtube.png')} alt='youtube'/>
                             </a>
                         </div>
                     </div>
